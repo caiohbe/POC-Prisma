@@ -16,7 +16,7 @@ export async function validateReview(req: Request, res: Response, next: NextFunc
 
     try {
         const { movieId, reviewerId } = newReview
-        const reviewExist = (await reviewsRepository.findSpecificReview(movieId, reviewerId)).rows[0]
+        const reviewExist = (await reviewsRepository.findSpecificReview(movieId, reviewerId))
 
         if (reviewExist) {
             res.sendStatus(409)
@@ -32,10 +32,10 @@ export async function validateReview(req: Request, res: Response, next: NextFunc
 }
 
 export async function validateReviewParams(req: Request, res: Response, next: NextFunction) {
-    const id: Number = +req.params.id
+    const id = +req.params.id
 
     try {
-        const targetedReview = (await reviewsRepository.findReviewById(id)).rows[0]
+        const targetedReview = (await reviewsRepository.findReviewById(id))
         if (!targetedReview) {
             res.sendStatus(404)
             return
@@ -48,11 +48,11 @@ export async function validateReviewParams(req: Request, res: Response, next: Ne
 }
 
 export async function validateReviewQuery(req: Request, res: Response, next: NextFunction) {
-    const id: Number = +req.query.id
+    const id = +req.query.id
 
     if (id) {
         try {
-            const targetedReview = (await reviewsRepository.findReviewById(id)).rows[0]
+            const targetedReview = (await reviewsRepository.findReviewById(id))
             if (!targetedReview) {
                 res.sendStatus(404)
                 return

@@ -15,7 +15,7 @@ export async function postReview(req: Request, res: Response) {
 }
 
 export async function deleteReview(req: Request, res: Response) {
-    const id: Number = +req.params.id
+    const id: number = +req.params.id
 
     try {
         reviewsService.deleteReview(id)
@@ -26,8 +26,8 @@ export async function deleteReview(req: Request, res: Response) {
 }
 
 export async function updateReview(req: Request, res: Response) {
-    const score: Number = +req.body.score
-    const id: Number = +req.params.id
+    const score: number = +req.body.score
+    const id: number = +req.params.id
     
     try {
         await reviewsService.updateReview(score, id)
@@ -38,7 +38,7 @@ export async function updateReview(req: Request, res: Response) {
 }
 
 export async function getReviews(req: Request, res: Response) {
-    const id: Number = +req.query.id
+    const id: number = +req.query.id
 
     try {
         const reviews = await reviewsService.getReviews(id)

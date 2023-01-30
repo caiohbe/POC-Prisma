@@ -16,9 +16,9 @@ export async function validateMovie(req: Request, res: Response, next: NextFunct
     }
 
     try {
-        const targetedMovie = (await moviesRepository.findMovieByTitle(newMovie.title)).rows
+        const targetedMovie = (await moviesRepository.findMovieByTitle(newMovie.title))
 
-        if (targetedMovie.length) {
+        if (targetedMovie) {
             res.sendStatus(409)
             return
         }
@@ -31,11 +31,11 @@ export async function validateMovie(req: Request, res: Response, next: NextFunct
 }
 
 export async function validateMovieQuery(req: Request, res: Response, next: NextFunction) {
-    const id: Number = +req.query.id
+    const id = +req.query.id
 
     if (id) {
         try {
-            const targetedReview = (await moviesRepository.findMovieById(id)).rows[0]
+            const targetedReview = (await moviesRepository.findMovieById(id))
             if (!targetedReview) {
                 res.sendStatus(404)
                 return

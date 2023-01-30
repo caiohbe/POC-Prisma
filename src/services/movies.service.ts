@@ -1,19 +1,21 @@
-import moviesRepository from "../repositories/movies.repository.js"
 import { Movie } from "../protocols/Movie.js"
+import moviesRepository from "../repositories/movies.repository.js"
 
-async function getMoviesById(id: Number) {  
+async function getMoviesById(id: number) {  
     if (!id) {
-        const movies = (await moviesRepository.findMovies()).rows
+        const movies = (await moviesRepository.findMovies())
         return movies
     } else {
-        const movie = (await moviesRepository.findMovieById(id)).rows[0]
+        const movie = (await moviesRepository.findMovieById(id))
         return movie
     }
 }
 
-function postMovie(movie: Movie) {
+async function postMovie(movie: Movie) {
     const movieTitle = movie.title
-    moviesRepository.insertMovie(movieTitle)
+    console.log(movieTitle)
+    
+    await moviesRepository.insertMovie(movieTitle)
 }
 
 const moviesService = {

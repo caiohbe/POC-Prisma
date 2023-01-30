@@ -3,7 +3,7 @@ import { Movie } from "../protocols/Movie.js";
 import moviesService from "../services/movies.service.js";
 
 export async function getMovies(req: Request, res: Response) {
-    const id: Number = +req.query.id
+    const id = +req.query.id
     
     try {
         const movies = await moviesService.getMoviesById(id)
@@ -14,7 +14,7 @@ export async function getMovies(req: Request, res: Response) {
 }
 
 export async function postMovie(req: Request, res: Response) {
-    const newMovie: Movie = req.body
+    const newMovie = req.body as Movie
 
     try {
         moviesService.postMovie(newMovie)

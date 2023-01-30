@@ -1,8 +1,8 @@
 type Review = {
-    id?: Number,
-    movieId: Number,
-    reviewerId: Number,
-    score: Number    
+    id?: number,
+    movieId: number,
+    reviewerId: number,
+    score: number    
 }
 
 export default Review

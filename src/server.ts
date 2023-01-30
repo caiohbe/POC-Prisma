@@ -11,7 +11,7 @@ server.get("/health", (req: Request, res: Response) => {
 })
 
 server
-    .use(moviesRouters)
+    .use(moviesRouters) 
     .use(reviewsRouters)
 
 server.listen(4000, () => {

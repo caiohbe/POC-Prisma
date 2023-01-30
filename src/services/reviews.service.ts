@@ -6,20 +6,20 @@ async function postReview(review: Review) {
     await reviewsRepository.insertReview(movieId, reviewerId, score)
 }
 
-function deleteReview(id: Number) {
-    reviewsRepository.deleteReviewById(id)
+async function deleteReview(id: number) {
+    await reviewsRepository.deleteReviewById(id)
 }
 
-async function updateReview(score: Number, id: Number) {
+async function updateReview(score: number, id: number) {
     await reviewsRepository.updateReviewById(score, id)
 }
 
-async function getReviews(id: Number) {
+async function getReviews(id: number) {
     if (id) {
-        const review = (await reviewsRepository.findReviewById(id)).rows[0]
+        const review = (await reviewsRepository.findReviewById(id))
         return review
     } else {
-        const reviews = (await reviewsRepository.findReviews()).rows
+        const reviews = (await reviewsRepository.findReviews())
         return reviews
     }
 }
