@@ -3,6 +3,21 @@
 ```
 npm i
 ```
+
+## Create a PostgreSQL database with any name
+
+## Create a `.env` file and configure it using `.env.example` as reference
+
+## Run all migrations:
+```
+npm run prisma:migrate
+```
+
+## Seed the database:
+```
+npm run prisma:seed
+```
+
 ## Run the aplication with nodemon/node:
 ```
 npx nodemon src/app.ts
